@@ -10,7 +10,7 @@ use macroquad::prelude::*;
 #[macroquad::main("Screen Manager")]
 async fn main() {
     let mut current_screen = "screen1".to_string();
-    let mut last_switch = get_time(); // Use get_time() to get the current time
+    let mut last_switch = get_time()-0.02; // Use get_time() to get the current time
 
     loop {
         if get_time() - last_switch > 0.01 { // 10ms cooldown
@@ -20,6 +20,7 @@ async fn main() {
                 _ => break,
             };
             last_switch = get_time(); // Reset cooldown timer
+        
         }
         next_frame().await;
     }
